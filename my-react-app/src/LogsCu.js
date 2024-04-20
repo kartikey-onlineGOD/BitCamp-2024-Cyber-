@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./HeroPage.css";
+import { useNavigate } from "react-router-dom";
 
 const LogsCu = () => {
   const instructions = [
@@ -37,6 +38,8 @@ const LogsCu = () => {
     phishingAttempt: "10.10.34.57",
     criticalWarnings: "10.10.34.56",
   };
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (textIndex < instructions.length) {
@@ -93,15 +96,21 @@ MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAu
         break;
       }
     }
-    alert(
-      validationResults
-        ? "All entries are correct!"
-        : "Some entries are incorrect, please review."
-    );
+
+    if (validationResults) {
+      alert("All entries are correct! Redirecting...");
+      setTimeout(() => {
+        navigate("/SclEngr"); // Adjust the route as per your routing setup
+      }, 3000); // Wait for 3 seconds before navigating
+    } else {
+      alert("Some entries are incorrect, please review.");
+    }
   };
 
   return (
-    <div className="hero-container">
+    <div className="hero-container" style={{ color: "green" }}>
+      {" "}
+      {/* Green text color applied */}{" "}
       <div className="hero-header"> Logs Console </div>{" "}
       <div className="hero-content">
         {" "}
@@ -112,25 +121,44 @@ MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAu
           </p>
         ))}{" "}
       </div>{" "}
-      <button onClick={downloadFile} className="download-button">
-        {" "}
+      <button
+        onClick={downloadFile}
+        className="download-button"
+        style={{
+          backgroundColor: "green",
+          borderColor: "darkgreen",
+          color: "white",
+        }} // Inline styles for the button
+      >
         Download Logs{" "}
       </button>{" "}
       <div>
         {" "}
         {Object.entries(events).map(([key, label]) => (
           <div key={key} style={{ marginBottom: "10px" }}>
-            <label style={{ marginRight: "10px" }}> {label}: </label>{" "}
+            <label style={{ marginRight: "10px", color: "green" }}>
+              {" "}
+              {/* Green label */} {label}:
+            </label>{" "}
             <input
               type="text"
               value={ipEntries[key]}
               onChange={(event) => handleInputChange(event, key)}
               placeholder="Enter IP Address"
-            />
+              style={{ borderColor: "green" }} // Green border for the input
+            />{" "}
           </div>
         ))}{" "}
-        <button onClick={validateInputs} style={{ marginTop: "10px" }}>
-          {" "}
+        <button
+          onClick={validateInputs}
+          className="input-button"
+          style={{
+            marginTop: "10px",
+            backgroundColor: "green",
+            borderColor: "darkgreen",
+            color: "white",
+          }} // Inline styles for the check button
+        >
           Check Answers{" "}
         </button>{" "}
       </div>{" "}

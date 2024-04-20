@@ -1,57 +1,70 @@
-import "./HeroPage.css";
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { StopwatchContext } from "./StopwatchContext";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroPage() {
-  const [email, setEmail] = React.useState("");
-  const [submitting, setSubmitting] = React.useState(false);
-  const [message, setMessage] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  // eslint-disable-next-line
+  const [message, setMessage] = useState("");
+  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const { time, setIsActive } = useContext(StopwatchContext);
 
-  useEffect(() => {
-    setIsActive(true); // Start the stopwatch automatically
-    // No dependency array means this effect does not re-run
-  }, [setIsActive]); // Effect depends on setIsActive to avoid adding it multiple times if the component re-renders
+  const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    return email.match(
-      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-  };
+  useEffect(() => {
+    setIsActive(true);
+    placeButton();
+    console.log("Component mounted. Stopwatch activated.");
+  }, [setIsActive]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!validateEmail(email)) {
-      setMessage("Invalid email format.");
-      return;
-    }
+    console.log("Submitting form with email:", email); // Log when form is submitted
 
     setSubmitting(true);
     setMessage("");
 
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_URL}/submit-email`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, time }),
-        }
-      );
+      console.log("Sending email to backend:", email); // Confirm email is being sent to backend
+      console.log("API URL:", process.env.REACT_APP_API_URL);
+
+      const response = await fetch("http://localhost:5000/process-idea", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subject: "Your Subject Here",
+          body: "Your email body here...",
+          to_email: email,
+          from_email: "info@kartikeypandey.online",
+          password: "Welcome@12345",
+        }),
+      });
 
       const data = await response.json();
+      console.log("Response from server:", data); // Log the response from the server
       if (response.ok) {
         setMessage("Confirmation email sent!");
       } else {
-        setMessage(data.error || "An error occurred.");
+        setMessage(data.error || "An error occurred while sending the email.");
       }
     } catch (error) {
-      setMessage("Network error: Could not send email.");
+      setMessage(`Network error: ${error.toString()}`);
+      console.log("Network error:", error); // Log network errors
     }
 
     setSubmitting(false);
+  };
+
+  const placeButton = () => {
+    const maxY = window.innerHeight - 20;
+    const maxX = window.innerWidth - 20;
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+    setButtonPosition({ x: randomX, y: randomY });
+    console.log("Button placed at:", randomX, randomY); // Log button placement
   };
 
   return (
@@ -59,6 +72,7 @@ export default function HeroPage() {
       <header className="hero-header">
         MOTH{" "}
         <div className="stopwatch-display">
+          {" "}
           Time: {time}
           seconds{" "}
         </div>{" "}
@@ -78,7 +92,10 @@ export default function HeroPage() {
               placeholder="Your email"
               className="email-input"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                console.log("Email field updated:", e.target.value); // Log every change in the email input
+              }}
               required
             />
             <button
@@ -91,6 +108,20 @@ export default function HeroPage() {
           </form>{" "}
         </div>{" "}
       </main>{" "}
+      <button
+        style={{
+          position: "absolute",
+          left: `${buttonPosition.x}px`,
+          top: `${buttonPosition.y}px`,
+          width: "20px",
+          height: "20px",
+          backgroundColor: "red",
+          border: "none",
+          opacity: 0.01, // Nearly invisible
+          cursor: "default",
+        }}
+        onClick={() => navigate("./ImgTestGame")}
+      ></button>{" "}
       <div className="help-icon"> ? </div>{" "}
     </div>
   );
