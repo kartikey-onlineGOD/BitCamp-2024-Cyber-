@@ -109,3 +109,26 @@
     right: 20px;
     top: 10px;
 }
+
+
+/* HeroPage.css */
+
+.download-button,
+.input-button {
+    background-color: green;
+    /* Green background for buttons */
+    color: white;
+    /* White text for better contrast */
+    border: 1px solid darkgreen;
+    /* Dark green border for a bit of depth */
+}
+
+.input-field {
+    border: 2px solid green;
+    /* Green border for input fields */
+}
+
+.hero-container {
+    color: green;
+    /* Green text for general container */
+}
