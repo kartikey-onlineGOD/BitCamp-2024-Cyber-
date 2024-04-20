@@ -1,0 +1,76 @@
+/* General styles for the ImgTestGame component */
+
+.body {
+    background-color: black;
+}
+
+.img-test-game {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+}
+
+.img-test-game img {
+    max-height: 512px;
+    /* Set maximum height for the image */
+    margin-bottom: 20px;
+    /* Space below the image */
+}
+
+
+/* Styles for the download button */
+
+.download-button {
+    background-color: lightgreen;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.download-button:hover {
+    background-color: #9acd32;
+    /* Lighter green color on hover */
+}
+
+
+/* Styles for the input fields container */
+
+.input-fields-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+
+/* Individual input field styles */
+
+.input-field {
+    width: 40px;
+    /* Width of each input field */
+    margin-right: 10px;
+    /* Space between fields */
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.input-field:focus {
+    border-color: #0044cc;
+    /* Change border color on focus */
+}
+
+
+/* Style for the valid code message */
+
+.valid-code-message {
+    color: darkgreen;
+    font-size: 16px;
+}

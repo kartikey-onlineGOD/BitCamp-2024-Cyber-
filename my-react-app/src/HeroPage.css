@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap');
+.hero-container {
+    color: #0f0;
+    /* Green text color */
+    background-color: black;
+    height: 100vh;
+    font-family: 'Source Code Pro', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Center content vertically */
+}
+
+.hero-header {
+    text-align: center;
+    padding-top: 20px;
+    font-size: 24px;
+}
+
+.hero-content {
+    padding: 0 20px;
+    text-align: left;
+    position: relative;
+}
+
+.terminal-text p {
+    margin: 0;
+    padding: 0;
+    border-right: 3px solid #0f0;
+    /* Green cursor */
+}
+
+
+/* Animation for typing out text */
+
+.typed-out {
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    animation: typing 3.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+}
+
+.enter-email {
+    animation-delay: 1s;
+}
+
+.click-button {
+    animation-delay: 4.5s;
+}
+
+.receive-confirmation {
+    animation-delay: 8s;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: #0f0;
+    }
+}
+
+.email-form {
+    margin-top: 30px;
+}
+
+.email-input,
+.submit-button {
+    padding: 10px;
+    margin-top: 10px;
+    background: #333;
+    border: 1px solid #555;
+    color: #0f0;
+    font-size: 16px;
+}
+
+.email-input {
+    width: 250px;
+    /* Adjust width as needed */
+}
+
+.submit-button {
+    background: #333;
+    border: none;
+    cursor: pointer;
+}
+
+.help-icon {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
