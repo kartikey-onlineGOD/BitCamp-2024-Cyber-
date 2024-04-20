@@ -11,6 +11,7 @@ import HeroPage from "./HeroPage";
 import ImgTestGame from "./ImgTestGame";
 import LogsCu from "./LogsCu";
 import SclEngr from "./SclEngr";
+import Caesar from "./Caesar";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/ImgTestGame" element={<ImgTestGame />} />{" "}
             <Route path="/LogsCU" element={<LogsCu />} />{" "}
             <Route path="/SclEngr" element={<SclEngr />} />{" "}
+            <Route path="/Caesar" element={<Caesar />} />{" "}
           </Routes>{" "}
         </div>{" "}
       </StopwatchProvider>{" "}
