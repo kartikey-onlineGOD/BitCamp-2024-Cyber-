@@ -1,0 +1,23 @@
+2023-04-21 02:05:00 INFO Data export initiated IP 10.10.34.56
+2023-04-20 23:30:00 WARN Unauthorized access attempt IP 10.10.34.56
+2023-04-23 00:10:00 CRITICAL Credential leak suspected IP 10.10.34.58
+2023-04-23 01:00:00 INFO Data encryption started IP 10.10.34.59
+2023-04-22 09:15:00 INFO Scheduled scan completed IP 192.168.1.102
+\x07\x08\x0cLealyuhs PW hjjlzzlk pualyuhs khah
+2023-04-24 12:00:00 INFO User guest login IP 192.168.1.105
+MjAyMy0wNC0yMyAwMTowMDowMCBJTkZPIERhdGEgZW5jcnlwdGlvbiBzdGFydGVkIElQIDEwLjEwLjM0LjU5
+2023-04-23 03:30:00 INFO Maintenance mode enabled IP 192.168.1.100
+2023-04-21 02:00:00 CRITICAL System breach detected IP 10.10.34.56
+\x07\x08\x0cJshwduynts pjd hmfslji
+MjAyMy0wNC0yMyAwMDoxMDowMCBDUklUSUNBTCBDcmVkZW50aWFsIGxlYWsgc3VzcGVjdGVkIElQIDEwLjEwLjM0LjU4
+MjAyMy0wNC0yMiAyMTo0NTowMCBXQVJOIFVudXN1YWwgbmV0d29yayB0cmFmZmljIGRldGVjdGVkIElQIDE5Mi4xNjguMS4xMDM=
+2023-04-20 08:00:00 INFO User admin login IP 192.168.1.100
+MjAyMy0wNC0yMiAwOToxNTowMCBJTkZPIFNjaGVkdWxlZCBzY2FuIGNvbXBsZXRlZCBJUCAxOTIuMTY4LjEuMTAy
+2023-04-24 18:30:00 WARN Firewall breach detected IP 10.10.34.60
+2023-04-23 00:05:00 WARN Possible phishing attempt IP 10.10.34.57
+2023-04-20 19:00:00 INFO User admin access granted IP 192.168.1.100
+2023-04-25 02:20:00 CRITICAL Kernel panic observed IP 192.168.1.101
+2023-04-25 02:25:00 INFO System reboot initiated IP 192.168.1.101
+MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAuMzQuNTc=
+2023-04-22 21:45:00 WARN Unusual network traffic detected IP 192.168.1.103
+\x15\x17\x1aXqdxwkrulchg dffhvv wr dgplq sdqho

@@ -1,6 +1,6 @@
 /* General styles for the ImgTestGame component */
 
-.body {
+body {
     background-color: black;
 }
 
@@ -8,6 +8,10 @@
     font-family: Arial, sans-serif;
     padding: 20px;
     text-align: center;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .img-test-game img {

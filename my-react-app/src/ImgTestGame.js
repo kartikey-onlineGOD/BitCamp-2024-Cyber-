@@ -1,24 +1,31 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./ImgTestGame.css";
 
 export default function ImgTestGame() {
+  const navigate = useNavigate();
   const [code, setCode] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
   const correctCode = "ASPDIYTELEEYUSEX"; // Replace with your specific code
 
   const handleInputChange = (index, value) => {
     if (/^[A-Z]$/.test(value) || value === "") {
-      // Ensure only uppercase alphabets are entered
       const newCode =
         code.slice(0, index) + value.toUpperCase() + code.slice(index + 1);
       setCode(newCode);
     }
   };
 
+  const goToLogsPage = () => {
+    navigate("/LogsCu"); // Route to navigate to the LogsCu page
+  };
+
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       if (code === correctCode) {
         setIsValid(true);
+        generateRandomPosition();
       } else {
         setIsValid(false);
         alert("Incorrect code. Please try again.");
@@ -26,14 +33,23 @@ export default function ImgTestGame() {
     }
   };
 
+  const generateRandomPosition = () => {
+    const maxY = window.innerHeight - 50; // Adjust 50px for button size
+    const maxX = window.innerWidth - 50; // Adjust 50px for button size
+    setButtonPosition({
+      x: Math.random() * maxX,
+      y: Math.random() * maxY,
+    });
+  };
+
   const handleDownloadClick = () => {
-    const imageUrl = require("./cyber-image-encoded.png"); // Make sure this path is correct and accessible
+    const imageUrl = require("./cyber-image-encoded.png");
     const link = document.createElement("a");
     link.href = imageUrl;
-    link.download = "cyber-image.png"; // Set the default filename for the download
-    document.body.appendChild(link); // Append link to body
-    link.click(); // Simulate click to trigger download
-    document.body.removeChild(link); // Clean up and remove the link
+    link.download = "cyber-image.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
@@ -60,6 +76,21 @@ export default function ImgTestGame() {
         ))}{" "}
       </div>{" "}
       {isValid && <p className="valid-code-message"> Code is valid! </p>}{" "}
+      {isValid && (
+        <button
+          onClick={goToLogsPage}
+          style={{
+            position: "absolute",
+            left: `${buttonPosition.x}px`,
+            top: `${buttonPosition.y}px`,
+            width: "10px",
+            height: "10px",
+            background: "white",
+          }}
+        >
+          {/* Button is hidden */}{" "}
+        </button>
+      )}{" "}
     </div>
   );
 }
