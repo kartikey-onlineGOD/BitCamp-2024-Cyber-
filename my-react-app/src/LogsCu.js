@@ -17,19 +17,26 @@ const LogsCu = () => {
 
   const [displayedText, setDisplayedText] = useState([]);
   const [textIndex, setTextIndex] = useState(0);
-  const [ips, setIps] = useState({ ip1: "", ip2: "", ip3: "" });
-  const [selections, setSelections] = useState({
-    sel1: "",
-    sel2: "",
-    sel3: "",
+  const [ipEntries, setIpEntries] = useState({
+    credentialLeak: "",
+    criticalWarnings: "",
+    phishingAttempt: "",
+    dataEncryption: "",
   });
 
-  const options = [
-    "Data Encryption Started",
-    "Credential Leak Suspected",
-    "Phishing Attempt",
-    "Multiple Critical Log Warnings",
-  ];
+  const events = {
+    credentialLeak: "Credential Leak Suspected",
+    phishingAttempt: "Phishing Attempt",
+    dataEncryption: "Data Encryption Started",
+    criticalWarnings: "Multiple Critical Log Warnings",
+  };
+
+  const correctAnswers = {
+    dataEncryption: "10.10.34.59",
+    credentialLeak: "10.10.34.58",
+    phishingAttempt: "10.10.34.57",
+    criticalWarnings: "10.10.34.56",
+  };
 
   useEffect(() => {
     if (textIndex < instructions.length) {
@@ -74,12 +81,23 @@ MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAu
     document.body.removeChild(element);
   };
 
-  const handleIpChange = (event, key) => {
-    setIps({ ...ips, [key]: event.target.value });
+  const handleInputChange = (event, key) => {
+    setIpEntries({ ...ipEntries, [key]: event.target.value });
   };
 
-  const handleSelectionChange = (event, key) => {
-    setSelections({ ...selections, [key]: event.target.value });
+  const validateInputs = () => {
+    let validationResults = true;
+    for (const key in correctAnswers) {
+      if (ipEntries[key] !== correctAnswers[key]) {
+        validationResults = false;
+        break;
+      }
+    }
+    alert(
+      validationResults
+        ? "All entries are correct!"
+        : "Some entries are incorrect, please review."
+    );
   };
 
   return (
@@ -100,28 +118,21 @@ MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAu
       </button>{" "}
       <div>
         {" "}
-        {Object.keys(ips).map((key, index) => (
-          <div key={key}>
+        {Object.entries(events).map(([key, label]) => (
+          <div key={key} style={{ marginBottom: "10px" }}>
+            <label style={{ marginRight: "10px" }}> {label}: </label>{" "}
             <input
               type="text"
-              value={ips[key]}
-              onChange={(event) => handleIpChange(event, key)}
-              placeholder="Enter Suspicious IP"
+              value={ipEntries[key]}
+              onChange={(event) => handleInputChange(event, key)}
+              placeholder="Enter IP Address"
             />
-            <select
-              value={selections[key]}
-              onChange={(event) => handleSelectionChange(event, key)}
-            >
-              <option value=""> Select Event Type </option>{" "}
-              {options.map((option) => (
-                <option key={option} value={option}>
-                  {" "}
-                  {option}{" "}
-                </option>
-              ))}{" "}
-            </select>{" "}
           </div>
         ))}{" "}
+        <button onClick={validateInputs} style={{ marginTop: "10px" }}>
+          {" "}
+          Check Answers{" "}
+        </button>{" "}
       </div>{" "}
     </div>
   );
