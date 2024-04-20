@@ -9,15 +9,17 @@ import {
 import HeroPage from "./HeroPage";
 import ImgTestGame from "./ImgTestGame";
 import LogsCu from "./LogsCu";
+import SclEngr from "./SclEngr";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<HeroPage />} />{" "}
-          <Route path="/ImgTestGame" element={<ImgTestGame />} />{" "}
+          <Route path="/" element={<HeroPage />} /> //{" "}
+          <Route path="/ImgTestGame" element={<ImgTestGame />} /> //{" "}
           <Route path="/LogsCU" element={<LogsCu />} />{" "}
+          <Route path="/SclEngr" element={<SclEngr />} />{" "}
         </Routes>{" "}
       </div>{" "}
     </Router>
