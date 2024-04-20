@@ -1,10 +1,17 @@
-import React from "react";
 import "./HeroPage.css";
+import React, { useContext, useEffect } from "react";
+import { StopwatchContext } from "./StopwatchContext";
 
 export default function HeroPage() {
   const [email, setEmail] = React.useState("");
   const [submitting, setSubmitting] = React.useState(false);
   const [message, setMessage] = React.useState("");
+  const { time, setIsActive } = useContext(StopwatchContext);
+
+  useEffect(() => {
+    setIsActive(true); // Start the stopwatch automatically
+    // No dependency array means this effect does not re-run
+  }, [setIsActive]); // Effect depends on setIsActive to avoid adding it multiple times if the component re-renders
 
   const validateEmail = (email) => {
     return email.match(
@@ -23,13 +30,16 @@ export default function HeroPage() {
     setMessage("");
 
     try {
-      const response = await fetch("/submit-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/submit-email`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, time }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -46,26 +56,39 @@ export default function HeroPage() {
 
   return (
     <div className="hero-container">
-      <header className="hero-header"> MOTH </header>{" "}
+      <header className="hero-header">
+        MOTH{" "}
+        <div className="stopwatch-display">
+          Time: {time}
+          seconds{" "}
+        </div>{" "}
+      </header>{" "}
       <main className="hero-content">
         <div className="terminal-text">
           <p className="typed-out enter-email"> Enter email to start </p>{" "}
           <p className="typed-out click-button"> Click the button to start </p>{" "}
           <p className="typed-out receive-confirmation">
-            {" "}
             You will receive a confirmation mail with the link to start{" "}
           </p>{" "}
         </div>{" "}
         <div className="email-form">
-          <input
-            type="email"
-            placeholder="Your email"
-            className="email-input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <button className="submit-button"> Submit </button>{" "}
+          <form onSubmit={handleSubmit}>
+            <input
+              type="email"
+              placeholder="Your email"
+              className="email-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <button
+              type="submit"
+              className="submit-button"
+              disabled={submitting}
+            >
+              Submit{" "}
+            </button>{" "}
+          </form>{" "}
         </div>{" "}
       </main>{" "}
       <div className="help-icon"> ? </div>{" "}

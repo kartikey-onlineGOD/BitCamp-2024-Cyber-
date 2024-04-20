@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { StopwatchProvider } from "./StopwatchContext";
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,13 +14,15 @@ import LogsCu from "./LogsCu";
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HeroPage />} />{" "}
-          <Route path="/ImgTestGame" element={<ImgTestGame />} />{" "}
-          <Route path="/LogsCU" element={<LogsCu />} />{" "}
-        </Routes>{" "}
-      </div>{" "}
+      <StopwatchProvider>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<HeroPage />} />{" "}
+            <Route path="/ImgTestGame" element={<ImgTestGame />} />{" "}
+            <Route path="/LogsCU" element={<LogsCu />} />{" "}
+          </Routes>{" "}
+        </div>{" "}
+      </StopwatchProvider>{" "}
     </Router>
   );
 }

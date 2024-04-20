@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { StopwatchContext } from "./StopwatchContext"; // Import the context
 import "./ImgTestGame.css";
 
 export default function ImgTestGame() {
@@ -7,7 +8,12 @@ export default function ImgTestGame() {
   const [code, setCode] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
+  const { time, setIsActive } = useContext(StopwatchContext);
   const correctCode = "ASPDIYTELEEYUSEX"; // Replace with your specific code
+
+  useEffect(() => {
+    setIsActive(true);
+  }, [setIsActive]);
 
   const handleInputChange = (index, value) => {
     if (/^[A-Z]$/.test(value) || value === "") {
@@ -54,6 +60,13 @@ export default function ImgTestGame() {
 
   return (
     <div className="img-test-game">
+      <header>
+        <h1>
+          {" "}
+          Time: {time}
+          seconds{" "}
+        </h1>{" "}
+      </header>{" "}
       <img
         src={require("./cyber-image-encoded.png")}
         alt="Encoded cyber-themed"
