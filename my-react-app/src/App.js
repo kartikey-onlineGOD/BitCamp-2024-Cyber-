@@ -10,6 +10,7 @@ import Caesar from "./Caesar";
 // eslint-disable-next-line
 import Message from "./Message";
 import RE from "./RE";
+import End from "./End";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/Caesar" element={<Caesar />} />{" "}
             <Route path="/Message" element={<Message />} />{" "}
             <Route path="/RE" element={<RE />} />{" "}
+            <Route path="/End" element={<End />} />{" "}
           </Routes>{" "}
         </div>{" "}
       </StopwatchProvider>{" "}
