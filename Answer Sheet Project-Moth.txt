@@ -11,4 +11,10 @@ criticalWarnings: "10.10.34.56",
 ANSWER: email: zypherionqixel@gmail.com
 	password: 20042004
 5. Caesar encryption: Use BruteForce decryptor. ANSWER: Least Significant Bit
-
+6. /Saved/Screenshot#1245
+/Source/CryptRaider/HINT
+/Saved/Logs/Totally Legit
+Saved/Crashes/UECC-Windows-1F8AE95F4F47EE5B0A1F31B8A0C3532A_0000/Windows-sdfkjbsdkjbchsblFHEB
+Saved/Autosaves/Game/asdmfnbvj
+Saved/Autosaves/fgsdjkhgjkdhdgvhjc
+Arrange them.
