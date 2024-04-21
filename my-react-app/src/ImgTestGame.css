@@ -25,7 +25,7 @@ body {
 /* Styles for the download button */
 
 .download-button {
-    background-color: lightgreen;
+    background-color: green;
     padding: 10px;
     margin-bottom: 20px;
     border: none;
@@ -35,7 +35,7 @@ body {
 }
 
 .download-button:hover {
-    background-color: #9acd32;
+    background-color: green;
     /* Lighter green color on hover */
 }
 

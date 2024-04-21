@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600&display=swap');
 .hero-container {
-    color: #0f0;
+    color: green;
     /* Green text color */
     background-color: black;
     height: 100vh;
@@ -26,7 +26,7 @@
 .terminal-text p {
     margin: 0;
     padding: 0;
-    border-right: 3px solid #0f0;
+    border-right: 3px solid green;
     /* Green cursor */
 }
 
@@ -67,7 +67,7 @@
         border-color: transparent;
     }
     50% {
-        border-color: #0f0;
+        border-color: green;
     }
 }
 
@@ -81,7 +81,7 @@
     margin-top: 10px;
     background: #333;
     border: 1px solid #555;
-    color: #0f0;
+    color: green;
     font-size: 16px;
 }
 
