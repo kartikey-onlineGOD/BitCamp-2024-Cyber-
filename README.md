@@ -28,7 +28,7 @@ Our primary hurdle was our initial lack of deep cybersecurity knowledge, requiri
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kartikey-onlineGOD/BitCamp-2024-Cyber-\
+   git clone https://github.com/kartikey-onlineGOD/BitCamp-2024-Cyber-
 
 2. Change to the app directory
    ```bash
