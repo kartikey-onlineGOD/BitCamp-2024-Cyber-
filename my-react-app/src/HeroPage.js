@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStopwatch } from "./StopwatchContext";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,12 @@ export default function HeroPage() {
   // eslint-disable-next-line
   const [message, setMessage] = useState("");
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  const { formattedTime } = useStopwatch();
+  const { formattedTime, resetAndStartStopwatch } = useStopwatch();
+
+  useEffect(() => {
+    resetAndStartStopwatch(); // Reset and start the stopwatch only on mount
+    // eslint-disable-next-line
+  }, []);
 
   const navigate = useNavigate();
 
@@ -70,7 +75,7 @@ The Moth Challenge Team
 
     setSubmitting(false);
   };
-
+  // eslint-disable-next-line
   const placeButton = () => {
     const maxY = window.innerHeight - 20;
     const maxX = window.innerWidth - 20;

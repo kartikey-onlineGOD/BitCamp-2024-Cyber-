@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-// Create a Context
 const StopwatchContext = createContext();
 
 export function useStopwatch() {
@@ -8,21 +7,31 @@ export function useStopwatch() {
 }
 
 export const StopwatchProvider = ({ children }) => {
-  const [startTime, setStartTime] = useState(() => {
-    const storedStart = localStorage.getItem("stopwatchStart");
-    return storedStart ? parseInt(storedStart, 10) : Date.now();
-  });
+  const [startTime, setStartTime] = useState(Date.now());
   const [elapsedTime, setElapsedTime] = useState(0);
+  const [timerActive, setTimerActive] = useState(false);
+
+  const resetAndStartStopwatch = () => {
+    const now = Date.now();
+    setStartTime(now);
+    setElapsedTime(0);
+    setTimerActive(true);
+    console.log("Stopwatch Reset and Started at", now);
+  };
 
   useEffect(() => {
-    localStorage.setItem("stopwatchStart", startTime);
-
-    const interval = setInterval(() => {
-      setElapsedTime(Date.now() - startTime);
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, [startTime]);
+    let interval;
+    if (timerActive) {
+      interval = setInterval(() => {
+        setElapsedTime(Date.now() - startTime);
+      }, 1000);
+      console.log("Interval started");
+    }
+    return () => {
+      clearInterval(interval);
+      console.log("Interval cleared");
+    };
+  }, [timerActive, startTime]);
 
   const formatTime = (ms) => {
     const totalSeconds = Math.floor(ms / 1000);
@@ -37,6 +46,7 @@ export const StopwatchProvider = ({ children }) => {
   const value = {
     elapsedTime,
     formattedTime: formatTime(elapsedTime),
+    resetAndStartStopwatch,
   };
 
   return (
