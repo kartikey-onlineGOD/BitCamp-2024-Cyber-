@@ -10,9 +10,13 @@ export default function SclEngr() {
     if (email === "zypherionqixel@gmail.com" && password === "20042004") {
       console.log("Login successful");
       setError(""); // Clear any previous errors
+      setEmail("");
+      setPassword("");
     } else {
       setError("Invalid credentials. Please try again."); // Set error message
     }
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -65,7 +69,7 @@ export default function SclEngr() {
         {error && <div style={{ color: "red" }}>{error}</div>}
         <form onSubmit={handleSubmit}>
           <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
