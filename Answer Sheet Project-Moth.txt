@@ -1,0 +1,14 @@
+Answer Sheet: Project-Moth
+
+1. HomePage: Use Inspect to find the hidden button. 
+2. Image Test: Use Least Significant Bit Decoding to find the phrase hidden in the image metadata. The capitalized letters are the answer to the puzzle. Once entered press Enter key and find the hidden button to the next page. ANSWER: ASPDIYTELEEYUSEX
+3. Logs Corruption: Use base 64 to read the corrupted log files and determine the answers. ANSWER:
+dataEncryption: "10.10.34.59",
+credentialLeak: "10.10.34.58",
+phishingAttempt: "10.10.34.57",
+criticalWarnings: "10.10.34.56",
+4. Social Engineering: Use the clues in the inspect to find the username: zephyrionq. This username can be found on instagram and the bio will have the linkedin, which has the email address. About the password, the bio has clue standing out: 2*year. From the post we can calculate that the birth year of the person is 2004. This gives 2 options: Password is 4008 or 20042004.
+ANSWER: email: zypherionqixel@gmail.com
+	password: 20042004
+5. Caesar encryption: Use BruteForce decryptor. ANSWER: Least Significant Bit
+
