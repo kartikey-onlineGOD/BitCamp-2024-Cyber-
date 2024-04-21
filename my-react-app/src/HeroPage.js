@@ -29,17 +29,36 @@ export default function HeroPage() {
       console.log("Sending email to backend:", email); // Confirm email is being sent to backend
       console.log("API URL:", process.env.REACT_APP_API_URL);
 
+      const emailBody = `
+Welcome to the Moth Challenge!
+
+This challenge is designed to test your skills and provide a comprehensive learning experience.
+
+Rules:
+1. Participate actively and respect all participants.
+2. All submissions must be your original work.
+3. Collaboration is encouraged, but direct copying is not allowed.
+
+You can start the challenge by visiting the following link:
+http://localhost:3000/Message
+
+Good luck, and may the best coder win!
+
+Best regards,
+The Moth Challenge Team
+`;
+
       const response = await fetch("http://localhost:5000/process-idea", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          subject: "Your Subject Here",
-          body: "Your email body here...",
-          to_email: email,
+          subject: "Welcome to the Moth Challenge",
+          body: emailBody, // Use the variable from above
+          to_email: email, // Assuming 'email' is already defined in your scope
           from_email: "info@kartikeypandey.online",
-          password: "Welcome@12345",
+          password: "Welcome@12345", // Reminder: It's insecure to include passwords directly in frontend code
         }),
       });
 

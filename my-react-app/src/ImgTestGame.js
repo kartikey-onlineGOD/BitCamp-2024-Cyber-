@@ -99,6 +99,7 @@ export default function ImgTestGame() {
             width: "10px",
             height: "10px",
             background: "white",
+            opacity: 0.01,
           }}
         >
           {/* Button is hidden */}{" "}

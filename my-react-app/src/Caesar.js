@@ -29,16 +29,16 @@ export default function Caesar() {
         color: "#39FF14", // Set font color to neon green
       }}
     >
-      <h1>Caesar Encryption</h1>
-      <h2>nvsprlvsrlVokcdCsqxspsmkxdLsdutlutl</h2>
+      <h1> Caesar Encryption </h1>{" "}
+      <h2> nvsprlvsrlVokcdCsqxspsmkxdLsdutlutl </h2>{" "}
       <h3>
         Fun Fact: The first documented use of encryption dates back to ancient
-        Egypt around 1900 BCE! The scribes used non-standard hieroglyphs in an
+        Egypt around 1900 BCE!The scribes used non - standard hieroglyphs in an
         inscription to obscure the meaning of a message, essentially creating an
-        early form of what we would today recognize as a substitution cipher.
-        This shows that the concept of keeping information secure by encoding
-        messages has been important to human societies for millennia!
-      </h3>
+        early form of what we would today recognize as a substitution
+        cipher.This shows that the concept of keeping information secure by
+        encoding messages has been important to human societies for millennia!
+      </h3>{" "}
       <input
         type="text"
         value={userInput}
@@ -66,13 +66,14 @@ export default function Caesar() {
           cursor: "pointer",
         }}
       >
-        Check Answer
-      </button>
+        Check Answer{" "}
+      </button>{" "}
       {isCorrect !== null && (
         <div style={{ marginTop: "20px", fontSize: "18px" }}>
-          {isCorrect ? "Correct! Well done." : "Incorrect, try again."}
+          {" "}
+          {isCorrect ? "Correct! Well done." : "Incorrect, try again."}{" "}
         </div>
-      )}
+      )}{" "}
     </div>
   );
 }

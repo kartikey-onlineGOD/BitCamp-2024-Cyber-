@@ -7,6 +7,8 @@ import ImgTestGame from "./ImgTestGame";
 import LogsCu from "./LogsCu";
 import SclEngr from "./SclEngr";
 import Caesar from "./Caesar";
+// eslint-disable-next-line
+import Message from "./Message";
 
 function App() {
   return (

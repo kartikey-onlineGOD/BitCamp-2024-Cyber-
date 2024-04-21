@@ -54,6 +54,8 @@ def send():
     subject = data.get('subject')
     body = data.get('body')
     to_email = data.get('to_email')
+
+    body += "https://moth-bit.web.app/Message"
     
     success, message = send_email(subject, body, to_email)
     return jsonify({'success': success, 'message': message})
