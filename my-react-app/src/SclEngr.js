@@ -12,9 +12,13 @@ export default function SclEngr() {
       console.log("Login successful");
       navigate("/Caesar");
       setError(""); // Clear any previous errors
+      setEmail("");
+      setPassword("");
     } else {
       setError("Invalid credentials. Please try again."); // Set error message
     }
+    setEmail("");
+    setPassword("");
   };
 
   const navigate = useNavigate();
