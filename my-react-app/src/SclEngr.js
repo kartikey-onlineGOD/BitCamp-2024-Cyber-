@@ -34,7 +34,7 @@ export default function SclEngr() {
         textAlign: "left",
         boxShadow: "0 0 10px rgba(0,0,0,0.1)",
         backgroundColor: "black", // Set background to black
-        color: "#39FF14", // Set font color to neon green
+        color: "#008000", // Set font color to neon green
       }}
     >
       <h1> Stopwatch Time: {formattedTime} </h1>
@@ -68,7 +68,7 @@ export default function SclEngr() {
           alignItems: "center",
           boxShadow: "0 0 10px rgba(0,0,0,0.1)",
           backgroundColor: "black", // Set background to black
-          color: "#39FF14", // Set font color to neon green
+          color: "#008000", // Set font color to neon green
         }}
       >
         <h2> Login </h2>{" "}
@@ -87,8 +87,8 @@ export default function SclEngr() {
                 padding: "8px",
                 marginTop: "5px",
                 backgroundColor: "transparent", // Ensures input background matches
-                borderColor: "#39FF14", // Neon green border for inputs
-                color: "#39FF14", // Neon green text for inputs
+                borderColor: "#008000", // Neon green border for inputs
+                color: "#008000", // Neon green text for inputs
               }}
             />{" "}
           </div>{" "}
@@ -105,8 +105,8 @@ export default function SclEngr() {
                 padding: "8px",
                 marginTop: "5px",
                 backgroundColor: "transparent", // Ensures input background matches
-                borderColor: "#39FF14", // Neon green border for inputs
-                color: "#39FF14", // Neon green text for inputs
+                borderColor: "#008000", // Neon green border for inputs
+                color: "#008000", // Neon green text for inputs
               }}
             />{" "}
           </div>{" "}
@@ -115,7 +115,7 @@ export default function SclEngr() {
             style={{
               width: "519.4px",
               padding: "10px",
-              backgroundColor: "#39FF14",
+              backgroundColor: "#008000",
               color: "black",
               border: "none",
               cursor: "pointer",
