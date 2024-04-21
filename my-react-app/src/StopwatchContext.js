@@ -1,28 +1,46 @@
-// StopwatchContext.js
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-export const StopwatchContext = createContext();
+// Create a Context
+const StopwatchContext = createContext();
+
+export function useStopwatch() {
+  return useContext(StopwatchContext);
+}
 
 export const StopwatchProvider = ({ children }) => {
-  const [time, setTime] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [startTime, setStartTime] = useState(() => {
+    const storedStart = localStorage.getItem("stopwatchStart");
+    return storedStart ? parseInt(storedStart, 10) : Date.now();
+  });
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    let interval = null;
+    localStorage.setItem("stopwatchStart", startTime);
 
-    if (isActive) {
-      interval = setInterval(() => {
-        setTime((time) => time + 1);
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
+    const interval = setInterval(() => {
+      setElapsedTime(Date.now() - startTime);
+    }, 1000);
 
     return () => clearInterval(interval);
-  }, [isActive]);
+  }, [startTime]);
+
+  const formatTime = (ms) => {
+    const totalSeconds = Math.floor(ms / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    return `${hours}:${String(minutes).padStart(2, "0")}:${String(
+      seconds
+    ).padStart(2, "0")}`;
+  };
+
+  const value = {
+    elapsedTime,
+    formattedTime: formatTime(elapsedTime),
+  };
 
   return (
-    <StopwatchContext.Provider value={{ time, setTime, isActive, setIsActive }}>
+    <StopwatchContext.Provider value={value}>
       {" "}
       {children}{" "}
     </StopwatchContext.Provider>

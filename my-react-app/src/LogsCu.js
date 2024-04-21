@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./HeroPage.css";
 import { useNavigate } from "react-router-dom";
+import { useStopwatch } from "./StopwatchContext";
 
 const LogsCu = () => {
   const instructions = [
@@ -40,6 +41,7 @@ const LogsCu = () => {
   };
 
   const navigate = useNavigate();
+  const { formattedTime } = useStopwatch();
 
   useEffect(() => {
     if (textIndex < instructions.length) {
@@ -109,7 +111,7 @@ MjAyMy0wNC0yMyAwMDowNTowMCBXQVJOIFBvc3NpYmxlIHBoaXNoaW5nIGF0dGVtcHQgSVAgMTAuMTAu
 
   return (
     <div className="hero-container" style={{ color: "green" }}>
-      {" "}
+      <h1> Stopwatch Time: {formattedTime} </h1>{" "}
       {/* Green text color applied */}{" "}
       <div className="hero-header"> Logs Console </div>{" "}
       <div className="hero-content">

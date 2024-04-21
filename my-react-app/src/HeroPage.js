@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { StopwatchContext } from "./StopwatchContext";
+import React, { useState } from "react";
+import { useStopwatch } from "./StopwatchContext";
 import { useNavigate } from "react-router-dom";
 
 export default function HeroPage() {
@@ -8,15 +8,9 @@ export default function HeroPage() {
   // eslint-disable-next-line
   const [message, setMessage] = useState("");
   const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
-  const { time, setIsActive } = useContext(StopwatchContext);
+  const { formattedTime } = useStopwatch();
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    setIsActive(true);
-    placeButton();
-    console.log("Component mounted. Stopwatch activated.");
-  }, [setIsActive]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -88,14 +82,8 @@ The Moth Challenge Team
 
   return (
     <div className="hero-container">
-      <header className="hero-header">
-        MOTH{" "}
-        <div className="stopwatch-display">
-          {" "}
-          Time: {time}
-          seconds{" "}
-        </div>{" "}
-      </header>{" "}
+      <h1> Stopwatch Time: {formattedTime} </h1>{" "}
+      <header className="hero-header"> MOTH </header>{" "}
       <main className="hero-content">
         <div className="terminal-text">
           <p className="typed-out enter-email"> Enter email to start </p>{" "}
@@ -139,7 +127,7 @@ The Moth Challenge Team
           opacity: 0.01, // Nearly invisible
           cursor: "default",
         }}
-        onClick={() => navigate("./ImgTestGame")}
+        onClick={() => navigate("./Caesar")}
       ></button>{" "}
       <div className="help-icon"> ? </div>{" "}
     </div>

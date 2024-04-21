@@ -9,6 +9,7 @@ import SclEngr from "./SclEngr";
 import Caesar from "./Caesar";
 // eslint-disable-next-line
 import Message from "./Message";
+import RE from "./RE";
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
             <Route path="/LogsCU" element={<LogsCu />} />{" "}
             <Route path="/SclEngr" element={<SclEngr />} />{" "}
             <Route path="/Caesar" element={<Caesar />} />{" "}
+            <Route path="/Message" element={<Message />} />{" "}
+            <Route path="/RE" element={<RE />} />{" "}
           </Routes>{" "}
         </div>{" "}
       </StopwatchProvider>{" "}

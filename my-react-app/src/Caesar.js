@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useStopwatch } from "./StopwatchContext";
 
 export default function Caesar() {
   const correctAnswer = "Least Significant Bit"; // Assuming this is the correct decryption of the cipher text
   const [userInput, setUserInput] = useState("");
   const [isCorrect, setIsCorrect] = useState(null);
+  const navigate = useNavigate();
+
+  const { formattedTime } = useStopwatch();
 
   const handleChange = (event) => {
     setUserInput(event.target.value);
@@ -29,7 +34,7 @@ export default function Caesar() {
         color: "#39FF14", // Set font color to neon green
       }}
     >
-      <h1> Caesar Encryption </h1>{" "}
+      <h1> Stopwatch Time: {formattedTime} </h1> <h1> Caesar Encryption </h1>{" "}
       <h2> nvsprlvsrlVokcdCsqxspsmkxdLsdutlutl </h2>{" "}
       <h3>
         Fun Fact: The first documented use of encryption dates back to ancient
@@ -71,7 +76,9 @@ export default function Caesar() {
       {isCorrect !== null && (
         <div style={{ marginTop: "20px", fontSize: "18px" }}>
           {" "}
-          {isCorrect ? "Correct! Well done." : "Incorrect, try again."}{" "}
+          {isCorrect
+            ? "Correct! Well done." && navigate("./LogsCu")
+            : "Incorrect, try again."}{" "}
         </div>
       )}{" "}
     </div>

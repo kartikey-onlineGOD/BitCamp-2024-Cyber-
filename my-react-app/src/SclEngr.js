@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useStopwatch } from "./StopwatchContext";
 
 export default function SclEngr() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(""); // State for handling errors
+  const { formattedTime } = useStopwatch();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (email === "zypherionqixel@gmail.com" && password === "20042004") {
       console.log("Login successful");
-      navigate("/Caesar");
+      navigate("/RE");
       setError(""); // Clear any previous errors
       setEmail("");
       setPassword("");
@@ -35,6 +37,7 @@ export default function SclEngr() {
         color: "#39FF14", // Set font color to neon green
       }}
     >
+      <h1> Stopwatch Time: {formattedTime} </h1>
       As you navigate through this page, engage your investigative skills to
       uncover hidden credentials cleverly embedded within its content.This
       challenge invites you to think critically and observe subtle details that
