@@ -20,7 +20,7 @@ export default function ImgTestGame() {
   };
 
   const goToLogsPage = () => {
-    navigate("/LogsCu"); // Route to navigate to the LogsCu page
+    navigate("/End"); // Route to navigate to the LogsCu page
   };
 
   const handleKeyPress = (event) => {

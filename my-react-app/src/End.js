@@ -1,9 +1,16 @@
-import React from "react";
+import { useStopwatch } from "./StopwatchContext";
+import React, { useEffect } from "react";
 
 export default function End() {
   const handleChange = (event) => {
     console.log("Congrats");
   };
+
+  const { formattedTime, stopStopwatch } = useStopwatch();
+
+  useEffect(() => {
+    stopStopwatch();
+  }, [stopStopwatch]);
 
   return (
     <div
@@ -17,13 +24,14 @@ export default function End() {
         color: "#39FF14", // Set font color to neon green
       }}
     >
+      <h1> Stopwatch Time: {formattedTime} </h1>{" "}
       <h1>
-        ░▀█▀░█░█░█▀█░█▀█░█░█░░░█░█░█▀█░█░█ <br />
-        ░░█░░█▀█░█▀█░█░█░█▀▄░░░░█░░█░█░█░█ <br />
-        ░░▀░░▀░▀░▀░▀░▀░▀░▀░▀░░░░▀░░▀▀▀░▀▀▀
-      </h1>
-
-      <h3>Made by Kartikey Pandey and Parth Kshirsagar</h3>
+        {" "}
+        ░▀█▀░█░█░█▀█░█▀█░█░█░░░█░█░█▀█░█░█ <br />{" "}
+        ░░█░░█▀█░█▀█░█░█░█▀▄░░░░█░░█░█░█░█ <br />{" "}
+        ░░▀░░▀░▀░▀░▀░▀░▀░▀░▀░░░░▀░░▀▀▀░▀▀▀{" "}
+      </h1>{" "}
+      <h3> Made by Kartikey Pandey and Parth Kshirsagar </h3>{" "}
       <button
         onClick={handleChange}
         style={{
@@ -36,8 +44,8 @@ export default function End() {
           cursor: "pointer",
         }}
       >
-        Back to Start
-      </button>
+        Back to Start{" "}
+      </button>{" "}
     </div>
   );
 }
